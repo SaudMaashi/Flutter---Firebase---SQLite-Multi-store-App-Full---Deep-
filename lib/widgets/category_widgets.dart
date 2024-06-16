@@ -25,14 +25,9 @@ class SliderBar extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  " << ",
-                  style: TextStyle(
-                    color: Colors.brown,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 10,
-                  ),
+                Text(
+                  mainCategoryName == "Beauty" ? "" : " << ",
+                  style: style,
                 ),
                 Text(
                   mainCategoryName.toUpperCase(),
@@ -43,14 +38,9 @@ class SliderBar extends StatelessWidget {
                     letterSpacing: 10,
                   ),
                 ),
-                const Text(
-                  " >> ",
-                  style: TextStyle(
-                    color: Colors.brown,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 10,
-                  ),
+                Text(
+                  mainCategoryName == "Men" ? "" : " >> ",
+                  style: style,
                 ),
               ],
             ),
@@ -122,3 +112,10 @@ class CategoryHeaderLabel extends StatelessWidget {
     );
   }
 }
+
+const style = TextStyle(
+  color: Colors.brown,
+  fontSize: 16,
+  fontWeight: FontWeight.w600,
+  letterSpacing: 10,
+);

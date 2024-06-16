@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:my_project/utilities/category_list.dart';
 import 'package:my_project/widgets/category_widgets.dart';
 
-class MenCategory extends StatelessWidget {
-  const MenCategory({super.key});
+class BeautyCategory extends StatelessWidget {
+  const BeautyCategory({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,23 +21,23 @@ class MenCategory extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const CategoryHeaderLabel(
-                    headerLabel: "Men",
+                    headerLabel: "Kids",
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.68,
                     child: GridView.count(
-                      crossAxisCount: 3,
+                      crossAxisCount: 2,
                       mainAxisSpacing: 70,
                       crossAxisSpacing: 15,
                       children: [
                         ...List.generate(
-                          men.length,
+                          beauty.length,
                           (index) {
                             return SubCategoryModel(
-                              mainCategoryName: "Men",
-                              subCategoryName: men[index],
-                              assetName: "images/men/men$index.jpg",
-                              subCategoryLabel: men[index],
+                              mainCategoryName: "Beauty",
+                              subCategoryName: beauty[index],
+                              assetName: "images/beauty/beauty$index.jpg",
+                              subCategoryLabel: beauty[index],
                             );
                           },
                         ),
@@ -52,7 +52,7 @@ class MenCategory extends StatelessWidget {
             bottom: 0,
             right: 0,
             child: SliderBar(
-              mainCategoryName: "Men",
+              mainCategoryName: "Beauty",
             ),
           ),
         ],

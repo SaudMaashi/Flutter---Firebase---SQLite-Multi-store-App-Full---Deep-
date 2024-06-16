@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/categories/accessories_category.dart';
+import 'package:my_project/categories/bags_category.dart';
+import 'package:my_project/categories/beauty_category.dart';
+import 'package:my_project/categories/electronics_category.dart';
+import 'package:my_project/categories/home_and_garden_cateogry.dart';
+import 'package:my_project/categories/kids_category.dart';
 import 'package:my_project/categories/men_category.dart';
+import 'package:my_project/categories/shoes_category.dart';
+import 'package:my_project/categories/women_category.dart';
 import 'package:my_project/widgets/fake_search.dart';
 
 final List<ItemData> items = [
@@ -99,30 +107,14 @@ class _CategoryScreenState extends State<CategoryScreen> {
         scrollDirection: Axis.vertical,
         children: const [
           MenCategory(),
-          Center(
-            child: Text("Women Category"),
-          ),
-          Center(
-            child: Text("Shoes Category"),
-          ),
-          Center(
-            child: Text("Bags Category"),
-          ),
-          Center(
-            child: Text("Electronices Category"),
-          ),
-          Center(
-            child: Text("Accessories Category"),
-          ),
-          Center(
-            child: Text("Home & Garden Category"),
-          ),
-          Center(
-            child: Text("Kids Category"),
-          ),
-          Center(
-            child: Text("Beauty Category"),
-          ),
+          WomenCategory(),
+          ShoesCategory(),
+          BagsCategory(),
+          ElectronicsCategory(),
+          AccessoriesCategory(),
+          HomeAndGardenCategory(),
+          KidsCategory(),
+          BeautyCategory(),
         ],
       ),
     );
