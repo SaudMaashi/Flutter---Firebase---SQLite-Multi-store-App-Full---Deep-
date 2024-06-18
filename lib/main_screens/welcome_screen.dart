@@ -204,7 +204,10 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                         ),
                         YellowButton(
                           label: "Sign Up",
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(
+                                context, "/customer_signup_screen");
+                          },
                           width: 0.25,
                         ),
                         AnimatedLogo(controller: _controller),
