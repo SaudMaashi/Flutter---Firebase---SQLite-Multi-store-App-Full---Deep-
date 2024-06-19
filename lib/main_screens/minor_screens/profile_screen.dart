@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_project/customer_screens/customer_orders_screen.dart';
 import 'package:my_project/customer_screens/wishlist_screen.dart';
 import 'package:my_project/main_screens/cart_screen.dart';
+import 'package:my_project/widgets/alert_dialog.dart';
 import 'package:my_project/widgets/app_bar_widgets.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -259,15 +261,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                             const YellowDivider(),
                             RepeatedListTile(
-                                onPressed: () {
-                                  Navigator.pushReplacementNamed(
-                                      context, "/welcome_screen");
-                                },
+                                onPressed: () async {},
                                 title: "Change Password",
                                 icon: Icons.lock),
                             const YellowDivider(),
-                            const RepeatedListTile(
-                                title: "Log Out", icon: Icons.logout)
+                            RepeatedListTile(
+                              title: "Log Out",
+                              icon: Icons.logout,
+                              onPressed: () {
+                                MyAlertDialog.showMyDialog(
+                                  context: context,
+                                  title: "Log Out",
+                                  content: "Are you sure to log out?",
+                                  tapYes: () async {
+                                    Navigator.pop(context);
+                                    Navigator.pushReplacementNamed(
+                                        context, "/welcome_screen");
+                                    await FirebaseAuth.instance.signOut();
+                                  },
+                                  tapNo: () {
+                                    Navigator.pop(context);
+                                  },
+                                );
+                              },
+                            )
                           ],
                         ),
                       ),

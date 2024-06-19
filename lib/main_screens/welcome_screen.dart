@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_project/widgets/yellow_button.dart';
 
@@ -26,6 +27,7 @@ class WelcomeScreen extends StatefulWidget {
 class _WelcomeScreenState extends State<WelcomeScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
+  bool processing = false;
 
   @override
   void initState() {
@@ -236,15 +238,27 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                           image: AssetImage("images/inapp/facebook.jpg"),
                         ),
                       ),
-                      GoogleFacebookLoginIn(
-                        label: "Guest",
-                        onPressed: () {},
-                        child: const Icon(
-                          Icons.person,
-                          size: 55,
-                          color: Colors.lightBlueAccent,
-                        ),
-                      ),
+                      processing == true
+                          ? const CircularProgressIndicator()
+                          : GoogleFacebookLoginIn(
+                              label: "Guest",
+                              onPressed: () async {
+                                await FirebaseAuth.instance.signInAnonymously();
+                                // ignore: use_build_context_synchronously
+                                Navigator.pushNamed(
+                                    // ignore: use_build_context_synchronously
+                                    context,
+                                    "/customer_home_screen");
+                                setState(() {
+                                  processing = true;
+                                });
+                              },
+                              child: const Icon(
+                                Icons.person,
+                                size: 55,
+                                color: Colors.lightBlueAccent,
+                              ),
+                            ),
                     ],
                   ),
                 ),
